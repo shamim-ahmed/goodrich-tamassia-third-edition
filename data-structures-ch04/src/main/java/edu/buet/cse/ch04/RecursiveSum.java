@@ -24,14 +24,18 @@ public class RecursiveSum {
           String.format("The provided array does not have %d elements", n));
     }
 
-    return findSum(values, 0, n);
+    return findSum(values, n);
   }
 
-  private static int findSum(int[] values, int i, int n) {
-    if (i < n) {
-      return values[i] + findSum(values, i + 1, n);
+  private static int findSum(int[] values, int n) {
+    if (n == 0) {
+      return 0;
     }
 
-    return 0;
+    if (n == 1) {
+      return values[0];
+    }
+
+    return findSum(values, n - 1) + values[n - 1];
   }
 }
