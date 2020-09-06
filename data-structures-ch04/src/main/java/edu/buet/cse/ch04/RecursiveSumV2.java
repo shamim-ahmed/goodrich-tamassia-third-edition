@@ -13,23 +13,26 @@ public class RecursiveSumV2 {
     int[] values = IntStream.iterate(1, i -> i + 1).limit(10).toArray();
 
     for (int i = 0; i <= values.length; i++) {
-      int sum = computeSum(values, i);
+      int sum = findSum(values, i);
       System.out.println(sum);
     }
   }
 
-  private static int computeSum(int[] values, int n) {
+  // this is a wrapper to the recursive method which performs some validation check before
+  // triggering the recursion
+  public static int findSum(int[] values, int n) {
     if (n > values.length) {
       throw new IllegalArgumentException(
           String.format("The provided array does not have %d elements", n));
     }
 
-    return findSum(values, 0, n);
+    return computeSum(values, 0, n);
   }
 
-  private static int findSum(int[] values, int i, int n) {
+  // this is the recursive method to compute sum
+  private static int computeSum(int[] values, int i, int n) {
     if (i < n) {
-      return values[i] + findSum(values, i + 1, n);
+      return values[i] + computeSum(values, i + 1, n);
     }
 
     return 0;

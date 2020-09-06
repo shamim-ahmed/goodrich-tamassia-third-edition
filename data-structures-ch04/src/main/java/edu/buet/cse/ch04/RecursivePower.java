@@ -13,7 +13,7 @@ public class RecursivePower {
     System.out.println(computePower(1, 1001));
   }
 
-  private static int computePower(int x, int n) {
+  public static int computePower(int x, int n) {
     if (n == 0) {
       return 1;
     }
